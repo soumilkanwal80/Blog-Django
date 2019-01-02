@@ -7,7 +7,11 @@
         <p style="display: inline">Published On: </p>
         {{ post.published_date }}
     </div>
-    <h1><a href="{% url 'post_detail' pk=post.id %}">{{ post.title }}</a></h1>
+    
+    <h1 style = "display: inline;"><a href="{% url 'post_detail' pk=post.id %}">{{ post.title }}</a></h1>
+    {% if user.is_authenticated %}
+        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    {% endif %}
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
 {% endfor %}
